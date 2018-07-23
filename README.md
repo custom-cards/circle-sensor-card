@@ -36,7 +36,7 @@ color_stops:
 
 ### Step 1
 
-Install `circle-sensor-card` by copying `circle-sensor-card.js`from this repo to `<config directory>/www/text-element.js` on your Home Assistant instance.
+Install `circle-sensor-card` by copying `circle-sensor-card.js`from this repo to `<config directory>/www/` on your Home Assistant instance.
 
 **Example:**
 
