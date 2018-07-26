@@ -53,6 +53,7 @@ class CircleSensorCard extends LitElement {
 
           .text, #name {
             font-size: 100%;
+            ${(this.config.shadow === true) ? 'text-shadow: 2px 2px black;' : ''}
           }
           
           .unit {
@@ -121,18 +122,18 @@ class CircleSensorCard extends LitElement {
     this.state = hass.states[this.config.entity];
     
     if (this.config.attribute) {
-      if (!this.state.attributes[this.config.attribute] || isNaN(this.state.attributes[this.config.attribute])) {
+      if (!this.state.attributes[this.config.attribute] || isNaN(this.state.attributes[this.config.attribute].replace(/,/g,""))) {
         console.error(`Attribute [${this.config.attribute}] is not a number: ${this.state.state}`);
         return;
       }
     } else {
-      if (!this.state || isNaN(this.state.state)) {
+      if (!this.state || isNaN(this.state.state.replace(/,/g,""))) {
         console.error(`State is not a number: ${this.state.state}`);
         return;
       }
     }
 
-    const state = this.config.attribute ? this.state.attributes[this.config.attribute] : this.state.state;
+    const state = this.config.attribute ? this.state.attributes[this.config.attribute].replace(/,/g,"") : this.state.state.replace(/,/g,"");
     const r = 200 * .45;
     const min = this.config.min || 0;
     const max = this.config.max || 100;
