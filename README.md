@@ -21,7 +21,8 @@ Custom component for lovelace which can be used as a card or an element on a pic
 | stroke_color | hex code | Default stroke color | `#03a9f4`
 | color_stops | object | Sensor value to color mapping (see below) | none
 | gradient | boolean | Whether to smoothly transition between color stops | `false`
-| units | boolean | Display units of measurement | `true`
+| units | string | Custom units of measurement | none
+| attribute | string | Attribute element of an entity to use instead of its state | none
 
 ### Color stops
 A mapping from `value` to `color`. If `gradient` is set to true, mid-stop colors will be
@@ -69,7 +70,8 @@ Add a custom card or custom element in your `ui-lovelace.yaml` using `type: cust
   stroke_width: 10
   font_size: 1.5em
   gradient: true
-  units: false
+  units: ' '
+  attribute: 'ambient'
   color_stops:
     50: '#55FF55'
     75: '#5555FF'
