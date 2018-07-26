@@ -53,7 +53,6 @@ class CircleSensorCard extends LitElement {
 
           .text, #name {
             font-size: 100%;
-            ${(this.config.shadow === true) ? 'text-shadow: 2px 2px black;' : ''}
           }
           
           .unit {
@@ -116,6 +115,8 @@ class CircleSensorCard extends LitElement {
     const container = this._root.querySelector('.labelContainer');
     container.style.color = this.config.font_color || 'var(--primary-text-color)';
     container.style.fontSize = this.config.font_size || '1em';
+    container.style.fontFamily = this.config.font_family || '';
+    container.style.textShadow = this.config.text_shadow || '';
   }
 
   set hass(hass) {

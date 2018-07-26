@@ -23,6 +23,8 @@ Custom component for lovelace which can be used as a card or an element on a pic
 | gradient | boolean | Whether to smoothly transition between color stops | `false`
 | units | string | Custom units of measurement | none
 | attribute | string | Attribute element of an entity to use instead of its state | none
+| font_family | string | Font family | none
+| text_shadow | string | Text shadow | none
 
 ### Color stops
 A mapping from `value` to `color`. If `gradient` is set to true, mid-stop colors will be
@@ -72,6 +74,8 @@ Add a custom card or custom element in your `ui-lovelace.yaml` using `type: cust
   gradient: true
   units: ' '
   attribute: 'ambient'
+  font_shadow: '2px 2px black'
+  font-family: 'Trebuchet MS'
   color_stops:
     50: '#55FF55'
     75: '#5555FF'
