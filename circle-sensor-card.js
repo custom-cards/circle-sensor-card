@@ -113,17 +113,21 @@ class CircleSensorCard extends LitElement {
 
   _updateConfig() {
     const container = this._root.querySelector('.labelContainer');
-    container.style.color = this.config.font_color || 'var(--primary-text-color)';
-    container.style.fontSize = this.config.font_size || '1em';
-    container.style.fontFamily = this.config.font_family || '';
-    container.style.textShadow = this.config.text_shadow || '';
+    container.style.color = 'var(--primary-text-color)';
+
+    if (this.config.font_style) {
+      Object.keys(this.config.font_style).forEach((prop) => {
+        container.style.setProperty(prop, this.config.font_style[prop]);
+      });
+    }
   }
 
   set hass(hass) {
     this.state = hass.states[this.config.entity];
     
     if (this.config.attribute) {
-      if (!this.state.attributes[this.config.attribute] || isNaN(this.state.attributes[this.config.attribute].replace(/,/g,""))) {
+      if (!this.state.attributes[this.config.attribute] || 
+          isNaN(this.state.attributes[this.config.attribute].replace(/,/g,""))) {
         console.error(`Attribute [${this.config.attribute}] is not a number: ${this.state.state}`);
         return;
       }
@@ -134,7 +138,9 @@ class CircleSensorCard extends LitElement {
       }
     }
 
-    const state = this.config.attribute ? this.state.attributes[this.config.attribute].replace(/,/g,"") : this.state.state.replace(/,/g,"");
+    const state = this.config.attribute ?
+                  this.state.attributes[this.config.attribute].replace(/,/g,"") :
+                  this.state.state.replace(/,/g,"");
     const r = 200 * .45;
     const min = this.config.min || 0;
     const max = this.config.max || 100;
