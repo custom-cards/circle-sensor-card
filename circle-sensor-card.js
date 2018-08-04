@@ -127,20 +127,20 @@ class CircleSensorCard extends LitElement {
     
     if (this.config.attribute) {
       if (!this.state.attributes[this.config.attribute] || 
-          isNaN(this.state.attributes[this.config.attribute])) {
-        console.error(`Attribute [${this.config.attribute}] is not a number: ${this.state.state}`);
+          isNaN(parseInt(this.state.attributes[this.config.attribute]))) {
+        console.error(`Attribute [${this.config.attribute}] is not a number: ${this.state.attributes[this.config.attribute]}`);
         return;
       }
     } else {
-      if (!this.state || isNaN(this.state.state)) {
+      if (!this.state || isNaN(parseInt(this.state.state))) {
         console.error(`State is not a number: ${this.state.state}`);
         return;
       }
     }
 
     const state = this.config.attribute ?
-                  this.state.attributes[this.config.attribute] :
-                  this.state.state;
+                  parseInt(this.state.attributes[this.config.attribute]) :
+                  parseInt(this.state.state);
     const r = 200 * .45;
     const min = this.config.min || 0;
     const max = this.config.max || 100;
