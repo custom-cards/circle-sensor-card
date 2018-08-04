@@ -14,13 +14,14 @@ Custom component for lovelace which can be used as a card or an element on a pic
 | name | string | Name to display above sensor value | none
 | min | number | Minimum value | `0`
 | max | number | Maximum value | `100`
-| font_size | string | Base font size | `1em`
-| font_color | string | Font color | `#0D0D0D`
+| font_style | list | CSS style properities to apply to font | none
 | fill | string | Background color of circle | `rgba(255, 255, 255, .75)`
-| stroke_width | number | width of circle value indication ring | `6`
-| stroke_color | hex code | default stroke color | `#03a9f4`
-| color_stops | object | sensor value to color mapping (see below) | none
-| gradient | boolean | whether to smoothly transition between color stops | `false`
+| stroke_width | number | Width of circle value indication ring | `6`
+| stroke_color | hex code | Default stroke color | `#03a9f4`
+| color_stops | object | Sensor value to color mapping (see below) | none
+| gradient | boolean | Whether to smoothly transition between color stops | `false`
+| units | string | Custom units of measurement | none
+| attribute | string | Attribute element of an entity to use instead of its state | none
 
 ### Color stops
 A mapping from `value` to `color`. If `gradient` is set to true, mid-stop colors will be
@@ -66,8 +67,14 @@ Add a custom card or custom element in your `ui-lovelace.yaml` using `type: cust
   max: 120
   min: 30
   stroke_width: 10
-  font_size: 1.5em
   gradient: true
+  units: ' '
+  attribute: 'ambient'
+  font_style:
+    color: red
+    font-size: 1.5em
+    text-shadow: '2px 2px black'
+    font-family: 'Trebuchet MS'
   color_stops:
     50: '#55FF55'
     75: '#5555FF'
