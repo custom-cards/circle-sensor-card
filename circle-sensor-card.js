@@ -72,8 +72,12 @@ class CircleSensorCard extends LitElement {
         <span class="labelContainer">
           ${config.name != null ? html`<span id="name">${config.name}</span>` : ''}
           <span id="label" class$="${!!config.name ? 'bold' : ''}">
-            <span class="text">${config.attribute ? state.attributes[config.attribute] : state.state}</span>
-            <span class="unit">${this.config.units ? this.config.units : state.attributes.unit_of_measurement}</span>
+            <span class="text">
+              ${config.attribute ? state.attributes[config.attribute] : state.state}
+            </span>
+            <span class="unit">
+              ${config.units ? config.units : state.attributes.unit_of_measurement}
+            </span>
           </span>
         </span>
       </div>
@@ -124,23 +128,23 @@ class CircleSensorCard extends LitElement {
 
   set hass(hass) {
     this.state = hass.states[this.config.entity];
-    
+
     if (this.config.attribute) {
-      if (!this.state.attributes[this.config.attribute] || 
+      if (!this.state.attributes[this.config.attribute] ||
           isNaN(this.state.attributes[this.config.attribute])) {
-        console.error(`Attribute [${this.config.attribute}] is not a number: ${this.state.attributes[this.config.attribute]}`);
+        console.error(`Attribute [${this.config.attribute}] is not a number`);
         return;
       }
     } else {
       if (!this.state || isNaN(this.state.state)) {
-        console.error(`State is not a number: ${this.state.state}`);
+        console.error(`State is not a number`);
         return;
       }
     }
 
-    const state = this.config.attribute ?
-                  this.state.attributes[this.config.attribute] :
-                  this.state.state;
+    const state = this.config.attribute
+      ? this.state.attributes[this.config.attribute]
+      : this.state.state;
     const r = 200 * .45;
     const min = this.config.min || 0;
     const max = this.config.max || 100;
