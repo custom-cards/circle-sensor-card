@@ -21,7 +21,9 @@ Custom component for lovelace which can be used as a card or an element on a pic
 | color_stops | object | Sensor value to color mapping (see below) | none
 | gradient | boolean | Whether to smoothly transition between color stops | `false`
 | units | string | Custom units of measurement | none
-| attribute | string | Attribute element of an entity to use instead of its state | none
+| attribute | string | Attribute element of entity to use instead of its state | none
+| attribute_max | string | Use attribute element of entity as max | none
+| show_max | boolean | Display the max value | `false`
 
 ### Color stops
 A mapping from `value` to `color`. If `gradient` is set to true, mid-stop colors will be
@@ -70,6 +72,8 @@ Add a custom card or custom element in your `ui-lovelace.yaml` using `type: cust
   gradient: true
   units: ' '
   attribute: 'ambient'
+  attribute_max: 'feels_like'
+  show_max: true
   font_style:
     color: red
     font-size: 1.5em
