@@ -76,7 +76,9 @@ class CircleSensorCard extends LitElement {
               ${config.attribute ? state.attributes[config.attribute] : state.state}
             </span>
             <span class="unit">
-              ${config.units ? config.units : state.attributes.unit_of_measurement}
+              ${config.show_max
+                ? html`&nbsp/ ${config.attribute_max ? state.attributes[config.attribute_max] : config.max}`
+                : (config.units ? config.units : state.attributes.unit_of_measurement)}
             </span>
           </span>
         </span>
@@ -147,7 +149,9 @@ class CircleSensorCard extends LitElement {
       : this.state.state;
     const r = 200 * .45;
     const min = this.config.min || 0;
-    const max = this.config.max || 100;
+    const max = this.config.attribute_max
+      ? this.state.attributes[this.config.attribute_max]
+      : (this.config.max || 100);
     const val = this._calculateValueBetween(min, max, state);
     const score = val * 2 * Math.PI * r;
     const total = 10 * r;
