@@ -64,7 +64,7 @@ class CircleSensorCard extends LitElement {
         <svg viewbox="0 0 200 200" id="svg">
           <circle id="circlestrokebg" cx="50%" cy="50%" r="45%"
             fill$="${config.fill || 'rgba(255, 255, 255, .75)'}"
-            stroke$="${config.stroke_bg_color || '#03a9f4'}"
+            stroke$="${config.stroke_bg_color || '#999999'}"
             stroke-width$="${config.stroke_bg_width}"
             transform="rotate(-90 100 100)"/>
           <circle id="circle" cx="50%" cy="50%" r="45%"
