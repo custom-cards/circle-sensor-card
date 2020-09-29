@@ -21,7 +21,10 @@ class CircleSensorCard extends LitElement {
 
           .container {
             position: relative;
-            height: 100%;
+            height: ${config.style.height || '100%'};
+            width: ${config.style.width};
+            top: ${config.style.top};
+            left: ${config.style.left};
             display: flex;
             flex-direction: column;
           }
