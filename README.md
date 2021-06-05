@@ -18,6 +18,8 @@ Custom component for lovelace which can be used as a card or an element on a pic
 | fill | string | Background color of circle | `rgba(255, 255, 255, .75)`
 | stroke_width | number | Width of circle value indication ring | `6`
 | stroke_color | hex code | Default stroke color | `#03a9f4`
+| stroke_bg_width | number | Width of background stroke | none
+| stroke_bg_color | hex code | Default stroke bg color | `#999999`
 | color_stops | object | Sensor value to color mapping (see below) | none
 | gradient | boolean | Whether to smoothly transition between color stops | `false`
 | units | string | Custom units of measurement | none

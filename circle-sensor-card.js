@@ -21,7 +21,10 @@ class CircleSensorCard extends LitElement {
 
           .container {
             position: relative;
-            height: 100%;
+            height: ${config.style.height || '100%'};
+            width: ${config.style.width};
+            top: ${config.style.top};
+            left: ${config.style.left};
             display: flex;
             flex-direction: column;
           }
@@ -62,6 +65,11 @@ class CircleSensorCard extends LitElement {
       </style>
       <div class="container" id="container" on-click="${() => this._click()}">
         <svg viewbox="0 0 200 200" id="svg">
+          <circle id="circlestrokebg" cx="50%" cy="50%" r="45%"
+            fill$="${config.fill || 'rgba(255, 255, 255, .75)'}"
+            stroke$="${config.stroke_bg_color || '#999999'}"
+            stroke-width$="${config.stroke_bg_width}"
+            transform="rotate(-90 100 100)"/>
           <circle id="circle" cx="50%" cy="50%" r="45%"
             fill$="${config.fill || 'rgba(255, 255, 255, .75)'}"
             stroke$="${config.stroke_color || '#03a9f4'}"
