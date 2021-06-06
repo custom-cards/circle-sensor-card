@@ -1,3 +1,6 @@
+# Circle Sensor Card
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge)](https://github.com/custom-components/hacs)
+
 Custom component for lovelace which can be used as a card or an element on a picture-elements card.
 
 ![Circle Sensor Examples](circle-sensor.png)
