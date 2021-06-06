@@ -8,7 +8,7 @@ Custom component for lovelace which can be used as a card or an element on a pic
 Add to resources:
 ```yaml
 resources:
-  - url: /hacsfiles/circle-sensor-card.js
+  - url: /hacsfiles/circle-sensor-card/circle-sensor-card.js
     type: module
 ```
 
