@@ -13,6 +13,12 @@ class CircleSensorCard extends LitElement {
   }
 
   _render({ state, dashArray, config }) {
+    var stateval;
+    if (state === undefined) {
+      stateval = 0;
+    } else {
+            stateval = state.state;
+    }
     return html`
       <style>
           :host {
@@ -81,7 +87,7 @@ class CircleSensorCard extends LitElement {
           ${config.name != null ? html`<span id="name">${config.name}</span>` : ''}
           <span id="label" class$="${!!config.name ? 'bold' : ''}">
             <span class="text">
-              ${config.attribute ? state.attributes[config.attribute] : state.state}
+              ${config.attribute ? state.attributes[config.attribute] : stateval}
             </span>
             <span class="unit">
               ${config.show_max
